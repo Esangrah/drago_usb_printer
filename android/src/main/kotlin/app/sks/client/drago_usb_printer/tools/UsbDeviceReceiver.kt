@@ -56,7 +56,12 @@ class UsbDeviceReceiver : BroadcastReceiver() {
         val filter = IntentFilter(Config.ACTION_USB_PERMISSION)
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
         filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
-        context.registerReceiver(this, filter)
+        ContextCompat.registerReceiver(
+            context,
+            this,
+            filter,
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
     }
 
     /**
